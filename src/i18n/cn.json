@@ -1,0 +1,42 @@
+{
+  "Knight": {
+    "DialogTitle": {
+      "Title": "介紹",
+      "Effect": "能力值",
+      "Knight": {
+        "Describe": "🔮 LiangYu | Demi | LAG <br/> 收集美感，點綴人生",
+        "Twitter": "https://twitter.com/chenlia48120395",
+        "Instagram": "https://www.instagram.com/chenliangyu19921226/",
+        "OpenSea": "",
+        "PieChart": {
+          "type": "pie",
+          "options": {
+            "min": 0,
+            "max": 100,
+            "responsive": true,
+            "plugins": {
+              "legend": {
+                "labels": {
+                  "color": "balck"
+                },
+                "position": "bottom"
+              }
+            }
+          },
+          "data": {
+            "labels": ["好色力", "宅宅力", "財力"],
+            "datasets": [
+              {
+                "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
+                "data": [90, 80, 18]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Footer": {
+    "CopyRight": "LAG 粉絲"
+  }
+}
