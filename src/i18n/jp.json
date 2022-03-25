@@ -74,6 +74,40 @@
               ]
             }
           }
+        },
+        {
+          "Name": "shunichiro.icp",
+          "Describe": "日本のウェブ企業でプロダクトオーナー兼マネージャーを務める",
+          "Twitter": "https://twitter.com/syunduel",
+          "Instagram": "",
+          "Oncyber": "https://oncyber.io/shunichiro.icp",
+          "Money": 30,
+          "OpenSea": "",
+          "PieChart": {
+            "type": "pie",
+            "options": {
+              "min": 0,
+              "max": 100,
+              "responsive": true,
+              "plugins": {
+                "legend": {
+                  "labels": {
+                    "color": "balck"
+                  },
+                  "position": "bottom"
+                }
+              }
+            },
+            "data": {
+              "labels": ["ムラムラ力", "ギラギラ力", "財力"],
+              "datasets": [
+                {
+                  "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
+                  "data": [60, 40, 30]
+                }
+              ]
+            }
+          }
         }
       ]
     }

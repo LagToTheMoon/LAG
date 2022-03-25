@@ -38,6 +38,7 @@
       </div>
       <div class="p-col-12 p-mb-2">
         <a
+          v-if="store.state.caseData.tw != ''"
           target="_blank"
           class="p-mr-3 pointer"
           :href="store.state.caseData.tw"
@@ -45,6 +46,7 @@
           <i class="pi pi-twitter" style="font-size: 2rem; color: black"></i>
         </a>
         <a
+          v-if="store.state.caseData.ig != ''"
           target="_blank"
           class="p-mr-3 pointer"
           :href="store.state.caseData.ig"
@@ -188,6 +190,7 @@ import Avatar from "primevue/avatar";
 import os from "../assets/os.png";
 import knight from "../assets/knight.png";
 import liang from "../assets/liang.png";
+import shunichiro from "../assets/shunichiro.jpeg";
 import { useStore } from "vuex";
 import { useI18n } from "../i18nPlugin";
 
@@ -226,7 +229,7 @@ const data = reactive({
   pfp: [
     { key: "🔮 LiangYu | Demi | LAG", value: liang },
     { key: "MeMe", value: knight },
-    { key: "CK", value: knight },
+    { key: "shunichiro.icp", value: shunichiro },
   ],
   knightList: [],
   knight_name: "",
