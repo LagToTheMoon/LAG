@@ -3,37 +3,78 @@
     "DialogTitle": {
       "Title": "はじめに",
       "Effect": "能力値",
-      "Knight": {
-        "Describe": "🔮 LiangYu | Demi | LAG <br/> 美を集め、生活を彩る。",
-        "Twitter": "https://twitter.com/chenlia48120395",
-        "Instagram": "https://www.instagram.com/chenliangyu19921226/",
-        "OpenSea": "",
-        "PieChart": {
-          "type": "pie",
-          "options": {
-            "min": 0,
-            "max": 100,
-            "responsive": true,
-            "plugins": {
-              "legend": {
-                "labels": {
-                  "color": "balck"
-                },
-                "position": "bottom"
+      "Media": "社会",
+      "Money": "財力",
+      "Knight": [
+        {
+          "Name": "🔮 LiangYu | Demi | LAG",
+          "Describe": "美を集め、生活を彩る。",
+          "Twitter": "https://twitter.com/chenlia48120395",
+          "Instagram": "https://www.instagram.com/chenliangyu19921226/",
+          "Oncyber": "https://oncyber.io/liang",
+          "Money": 60,
+          "OpenSea": "",
+          "PieChart": {
+            "type": "pie",
+            "options": {
+              "min": 0,
+              "max": 100,
+              "responsive": true,
+              "plugins": {
+                "legend": {
+                  "labels": {
+                    "color": "balck"
+                  },
+                  "position": "bottom"
+                }
               }
+            },
+            "data": {
+              "labels": ["ムラムラ力", "ギラギラ力", "財力"],
+              "datasets": [
+                {
+                  "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
+                  "data": [90, 80, 18]
+                }
+              ]
             }
-          },
-          "data": {
-            "labels": ["ムラムラ力", "ギラギラ力", "財力"],
-            "datasets": [
-              {
-                "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
-                "data": [90, 80, 18]
+          }
+        },
+        {
+          "Name": "MeMe",
+          "Describe": "美を集め、生活を彩る。",
+          "Twitter": "https://twitter.com/chenlia48120395",
+          "Instagram": "https://www.instagram.com/chenliangyu19921226/",
+          "Oncyber": "https://oncyber.io/liang",
+          "Money": 100,
+          "OpenSea": "",
+          "PieChart": {
+            "type": "pie",
+            "options": {
+              "min": 0,
+              "max": 100,
+              "responsive": true,
+              "plugins": {
+                "legend": {
+                  "labels": {
+                    "color": "balck"
+                  },
+                  "position": "bottom"
+                }
               }
-            ]
+            },
+            "data": {
+              "labels": ["ムラムラ力", "ギラギラ力", "財力"],
+              "datasets": [
+                {
+                  "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
+                  "data": [90, 80, 18]
+                }
+              ]
+            }
           }
         }
-      }
+      ]
     }
   },
   "Footer": {

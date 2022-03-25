@@ -5,8 +5,21 @@ export default createStore({
   state: {
     lang: "en",
     dialogData: [],
+    caseData: {
+      name: "",
+      img: "",
+      discribe: "",
+      ig: "",
+      tw: "",
+      oncyber: "",
+      PieChart: {},
+      BarChart: {},
+    },
   },
   mutations: {
+    set_case_data(state, caseData) {
+      state.caseData = caseData;
+    },
     set_lang(state, value) {
       state.lang = value;
     },

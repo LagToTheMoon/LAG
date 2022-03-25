@@ -15,15 +15,40 @@
     <!-- <Describe class="p-mt-2" /> -->
     <Sidebar v-model:visible="data.knight">
       <div class="p-col-12">
+        <Avatar
+          :image="store.state.caseData.img"
+          class="mr-2"
+          size="xlarge"
+          shape="circle"
+        />
+        <div class="p-mt-1">
+          <span>
+            {{ store.state.caseData.name }}
+          </span>
+        </div>
+      </div>
+      <div class="p-col-12">
         <i class="pi pi-eye p-mr-1"></i
         >{{ i18n.$t("Knight").DialogTitle.Title }}
       </div>
-      <div class="p-col-12" v-html="data.CaseData.discribe"></div>
+      <div class="p-col-12 p-mb-1" v-html="store.state.caseData.discribe"></div>
       <div class="p-col-12">
-        <a target="_blank" class="p-mr-3 pointer" :href="data.CaseData.tw">
+        <i class="pi pi-users p-mr-1"></i
+        >{{ i18n.$t("Knight").DialogTitle.Media }}
+      </div>
+      <div class="p-col-12 p-mb-2">
+        <a
+          target="_blank"
+          class="p-mr-3 pointer"
+          :href="store.state.caseData.tw"
+        >
           <i class="pi pi-twitter" style="font-size: 2rem; color: black"></i>
         </a>
-        <a target="_blank" class="p-mr-3 pointer" :href="data.CaseData.ig">
+        <a
+          target="_blank"
+          class="p-mr-3 pointer"
+          :href="store.state.caseData.ig"
+        >
           <i class="pi pi-instagram" style="font-size: 2rem; color: black"></i>
         </a>
         <!-- <a
@@ -40,7 +65,36 @@
       </div>
       <div class="p-grid">
         <div class="p-col-12">
-          <vue3-chart-js v-bind="{ ...data.CaseData.PieChart }" />
+          <vue3-chart-js v-bind="{ ...store.state.caseData.PieChart }" />
+        </div>
+      </div>
+    </Sidebar>
+    <Sidebar v-model:visible="data.choose" position="right">
+      <div class="p-grid">
+        <div
+          class="p-col-12 p-grid p-mt-2 knightCard"
+          v-for="(item, index) in data.knightList"
+          @click="ChooseKnight(item)"
+        >
+          <div class="p-col-3">
+            <Avatar
+              :image="item.img"
+              class="mr-2"
+              size="xlarge"
+              shape="circle"
+            />
+          </div>
+          <div class="p-col-9">
+            <span> {{ item.name }} </span><br />
+            <span class="p-ml-1">{{
+              i18n.$t("Knight").DialogTitle.Money
+            }}</span>
+            <ProgressBar
+              class="p-ml-1"
+              :value="item.money"
+              :showValue="false"
+            />
+          </div>
         </div>
       </div>
     </Sidebar>
@@ -51,23 +105,33 @@
         style="line-height: 20px"
         @click="Detail"
       />
-      <Chip label="🔮 LiangYu | Demi | LAG" :image="logo" class="mr-2 mb-2" />
+      <Button
+        class="p-mr-2 mr-2 mb-2"
+        icon="pi pi-th-large"
+        style="line-height: 20px"
+        @click="Choose"
+      />
+      <Chip
+        :label="store.state.caseData.name"
+        :image="store.state.caseData.img"
+        class="mr-2 mb-2"
+      />
       <marquee
         direction="right"
         height="30"
-        width="200"
+        width="65"
         scrollamount="5"
         behavior="alternate"
       >
         <img :src="fly" class="fly" />
-        <img :src="fly" class="fly" />
-        <img :src="fly" class="fly" />
+        <!-- <img :src="fly" class="fly" />
+        <img :src="fly" class="fly" /> -->
       </marquee>
     </div>
     <div class="p-mt-2" style="width: 100%">
       <iframe
         style="width: 100%; height: calc(100vh - 130px)"
-        src="https://oncyber.io/liang"
+        :src="store.state.caseData.oncyber"
       >
         你的瀏覽器不支援 iframe
       </iframe>
@@ -97,6 +161,7 @@ import {
   toRefs,
   computed,
 } from "vue";
+import ProgressBar from "primevue/progressbar";
 import logo from "../assets/logo.png";
 import fly from "../assets/fly.png";
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
@@ -109,7 +174,10 @@ import Bottom from "../components/Bottom.vue";
 import Describe from "../components/Describe.vue";
 import Subject from "../components/Subject.vue";
 import Video from "../assets/LAG.mp4";
+import Avatar from "primevue/avatar";
 import os from "../assets/os.png";
+import knight from "../assets/knight.png";
+import liang from "../assets/liang.png";
 import { useStore } from "vuex";
 import { useI18n } from "../i18nPlugin";
 
@@ -118,29 +186,121 @@ const store = useStore();
 
 // eslint-disable-next-line no-unused-vars
 const mounted = onBeforeMount(async () => {
+  if (store.state.caseData.name == "") {
+    let tmpImg = "";
+    for (let i = 0; i < data.pfp.length; i++) {
+      if (data.pfp[i].key == i18n.$t("Knight").DialogTitle.Knight[0].Name) {
+        tmpImg = data.pfp[i].value;
+      }
+    }
+    let tmpData = {
+      name: i18n.$t("Knight").DialogTitle.Knight[0].Name,
+      img: tmpImg,
+      ig: i18n.$t("Knight").DialogTitle.Knight[0].Instagram,
+      tw: i18n.$t("Knight").DialogTitle.Knight[0].Twitter,
+      money: i18n.$t("Knight").DialogTitle.Knight[0].Money,
+      oncyber: i18n.$t("Knight").DialogTitle.Knight[0].Oncyber,
+      discribe: i18n.$t("Knight").DialogTitle.Knight[0].Describe,
+      PieChart: i18n.$t("Knight").DialogTitle.Knight[0].PieChart,
+    };
+    store.commit("set_case_data", tmpData);
+  }
+
   //   store.commit("set_product_data", i18n.$t("Home").ProductData);
   //   store.commit("set_dialog_data", i18n.$t("Home").DialogData);
 });
 
 const data = reactive({
+  choose: false,
   knight: false,
-  CaseData: {
-    discribe: "",
-    ig: "",
-    tw: "",
-    PieChart: {},
-    BarChart: {},
-  },
+  pfp: [
+    { key: "🔮 LiangYu | Demi | LAG", value: liang },
+    { key: "MeMe", value: knight },
+    { key: "CK", value: knight },
+  ],
+  knightList: [],
+  //   CaseData: {
+  //     name: "",
+  //     discribe: "",
+  //     ig: "",
+  //     tw: "",
+  //     oncyber: "",
+  //     PieChart: {},
+  //     BarChart: {},
+  //   },
 });
+
+function ChooseKnight(knight) {
+  console.log(knight);
+  let tmpImg = "";
+  for (let i = 0; i < data.pfp.length; i++) {
+    if (data.pfp[i].key == knight.name) {
+      tmpImg = data.pfp[i].value;
+    }
+  }
+  let tmpData = {
+    name: knight.name,
+    img: tmpImg,
+    ig: knight.ig,
+    tw: knight.tw,
+    money: knight.money,
+    oncyber: knight.oncyber,
+    discribe: knight.discribe,
+    PieChart: knight.PieChart,
+  };
+  store.commit("set_case_data", tmpData);
+}
+
+function Choose() {
+  data.choose = true;
+
+  let tmp = [];
+  for (let i = 0; i < i18n.$t("Knight").DialogTitle.Knight.length; i++) {
+    let tmpImg = "";
+    for (let j = 0; j < data.pfp.length; j++) {
+      if (data.pfp[j].key == i18n.$t("Knight").DialogTitle.Knight[i].Name) {
+        tmpImg = data.pfp[j].value;
+      }
+    }
+    tmp.push({
+      name: i18n.$t("Knight").DialogTitle.Knight[i].Name,
+      ig: i18n.$t("Knight").DialogTitle.Knight[i].Instagram,
+      img: tmpImg,
+      money: i18n.$t("Knight").DialogTitle.Knight[i].Money,
+      tw: i18n.$t("Knight").DialogTitle.Knight[i].Twitter,
+      oncyber: i18n.$t("Knight").DialogTitle.Knight[i].Oncyber,
+      discribe: i18n.$t("Knight").DialogTitle.Knight[i].Describe,
+      PieChart: i18n.$t("Knight").DialogTitle.Knight[i].PieChart,
+    });
+  }
+  data.knightList = tmp;
+}
+
 function Detail() {
   data.knight = true;
-  let tmpData = {
-    ig: i18n.$t("Knight").DialogTitle.Knight.Instagram,
-    tw: i18n.$t("Knight").DialogTitle.Knight.Twitter,
-    discribe: i18n.$t("Knight").DialogTitle.Knight.Describe,
-    PieChart: i18n.$t("Knight").DialogTitle.Knight.PieChart,
-  };
-  data.CaseData = tmpData;
+  let tmpImg = "";
+  for (let i = 0; i < data.pfp.length; i++) {
+    if (data.pfp[i].key == store.state.caseData.name) {
+      tmpImg = data.pfp[i].value;
+    }
+  }
+  for (let i = 0; i < i18n.$t("Knight").DialogTitle.Knight.length; i++) {
+    if (
+      i18n.$t("Knight").DialogTitle.Knight[i].Name == store.state.caseData.name
+    ) {
+      let tmpData = {
+        name: i18n.$t("Knight").DialogTitle.Knight[i].Name,
+        ig: i18n.$t("Knight").DialogTitle.Knight[i].Instagram,
+        img: tmpImg,
+        tw: i18n.$t("Knight").DialogTitle.Knight[i].Twitter,
+        money: i18n.$t("Knight").DialogTitle.Knight[i].Money,
+        oncyber: i18n.$t("Knight").DialogTitle.Knight[i].Oncyber,
+        discribe: i18n.$t("Knight").DialogTitle.Knight[i].Describe,
+        PieChart: i18n.$t("Knight").DialogTitle.Knight[i].PieChart,
+      };
+      store.commit("set_case_data", tmpData);
+    }
+  }
 }
 </script>
 
@@ -153,5 +313,17 @@ function Detail() {
   display: block;
   height: 43px;
   width: 43px;
+}
+.knightCard {
+  border-radius: 30px;
+  border: groove 1em red;
+  cursor: pointer;
+  margin-left: 0.05rem !important;
+}
+.knightCard:hover {
+  border-radius: 30px;
+  border: groove 1em yellow;
+  cursor: pointer;
+  margin-left: 0.05rem;
 }
 </style>
