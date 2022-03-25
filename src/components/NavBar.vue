@@ -1,7 +1,7 @@
 <script setup>
 import Dropdown from "primevue/dropdown";
-import { ref, reactive } from "vue";
 import Menubar from "primevue/menubar";
+import { ref, reactive } from "vue";
 import Toolbar from "primevue/toolbar";
 import cookie from "../cookie";
 import { useStore } from "vuex";
@@ -32,16 +32,52 @@ const data = reactive({
 </script>
 
 <template>
-  <!-- <Menubar :model="items">
+  <!-- <Menubar class="toolbar">
     <template #start>
       <img
         alt="logo"
-        src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png"
-        height="40"
-        class="p-mr-2"
+        :src="logo"
+        class="p-mr-2 logo pointer"
+        @click="router.push('/')"
       />
     </template>
-    <template #end> </template>
+    <template #item>
+      <img
+        :src="knight"
+        @click="router.push('/knight')"
+        class="p-mr-3 pointer knight"
+      />
+      <a
+        target="_blank"
+        class="p-mr-3 pointer"
+        href="https://opensea.io/collection/love-addicted-girls"
+      >
+        <img :src="os" class="knight" />
+      </a>
+      <a
+        target="_blank"
+        class="p-mr-3 pointer"
+        href="https://twitter.com/SoudanNFT_LAG"
+      >
+        <i class="pi pi-twitter" style="font-size: 2rem; color: black"></i>
+      </a>
+      <a
+        class="p-mr-3 pointer"
+        target="_blank"
+        href="https://discord.com/invite/Soudan"
+      >
+        <i class="pi pi-discord" style="font-size: 2rem; color: black"></i>
+      </a>
+    </template>
+    <template #end>
+      <Dropdown
+        v-model="store.state.lang"
+        :options="data.lang"
+        @change="langSwitch"
+        optionLabel="name"
+        optionValue="code"
+      />
+    </template>
   </Menubar> -->
   <Toolbar class="toolbar">
     <template #start>
@@ -54,10 +90,6 @@ const data = reactive({
     </template>
 
     <template #end>
-      <!-- <a target="_blank" href="https://www.facebook.com/apaostudio">
-        <i class="pi pi-facebook p-mr-3 pointer" style="font-size: 2rem"></i>
-      </a> -->
-
       <img
         :src="knight"
         @click="router.push('/knight')"
@@ -79,9 +111,7 @@ const data = reactive({
       >
         <i class="pi pi-twitter" style="font-size: 2rem; color: black"></i>
       </a>
-      <!-- <a target="_blank" href="https://www.instagram.com/apaoartstudio/">
-        <i class="pi pi-instagram p-mr-3 pointer" style="font-size: 2rem"></i>
-      </a> -->
+
       <a
         class="p-mr-3 pointer"
         target="_blank"

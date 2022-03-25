@@ -71,6 +71,14 @@
     </Sidebar>
     <Sidebar v-model:visible="data.choose" position="right">
       <div class="p-grid">
+        <div class="p-col-12">
+          <label for="factory">{{ i18n.$t("Knight").DialogTitle.Name }}</label>
+          <InputText
+            class="p-ml-1"
+            id="factory"
+            v-model.trim="data.knight_name"
+          />
+        </div>
         <div
           class="p-col-12 p-grid p-mt-2 knightCard"
           v-for="(item, index) in data.knightList"
@@ -160,7 +168,9 @@ import {
   onBeforeMount,
   toRefs,
   computed,
+  watch,
 } from "vue";
+import InputText from "primevue/inputtext";
 import ProgressBar from "primevue/progressbar";
 import logo from "../assets/logo.png";
 import fly from "../assets/fly.png";
@@ -219,6 +229,7 @@ const data = reactive({
     { key: "CK", value: knight },
   ],
   knightList: [],
+  knight_name: "",
   //   CaseData: {
   //     name: "",
   //     discribe: "",
@@ -231,7 +242,6 @@ const data = reactive({
 });
 
 function ChooseKnight(knight) {
-  console.log(knight);
   let tmpImg = "";
   for (let i = 0; i < data.pfp.length; i++) {
     if (data.pfp[i].key == knight.name) {
@@ -301,7 +311,40 @@ function Detail() {
       store.commit("set_case_data", tmpData);
     }
   }
+  data.knightList = tmp;
 }
+watch(
+  () => data.knight_name,
+  () => {
+    let tmp = [];
+    for (let i = 0; i < i18n.$t("Knight").DialogTitle.Knight.length; i++) {
+      if (
+        i18n
+          .$t("Knight")
+          .DialogTitle.Knight[i].Name.toLowerCase()
+          .includes(data.knight_name.toLowerCase())
+      ) {
+        let tmpImg = "";
+        for (let j = 0; j < data.pfp.length; j++) {
+          if (data.pfp[j].key == i18n.$t("Knight").DialogTitle.Knight[i].Name) {
+            tmpImg = data.pfp[j].value;
+          }
+        }
+        tmp.push({
+          name: i18n.$t("Knight").DialogTitle.Knight[i].Name,
+          ig: i18n.$t("Knight").DialogTitle.Knight[i].Instagram,
+          img: tmpImg,
+          money: i18n.$t("Knight").DialogTitle.Knight[i].Money,
+          tw: i18n.$t("Knight").DialogTitle.Knight[i].Twitter,
+          oncyber: i18n.$t("Knight").DialogTitle.Knight[i].Oncyber,
+          discribe: i18n.$t("Knight").DialogTitle.Knight[i].Describe,
+          PieChart: i18n.$t("Knight").DialogTitle.Knight[i].PieChart,
+        });
+      }
+    }
+    data.knightList = tmp;
+  }
+);
 </script>
 
 <style>
