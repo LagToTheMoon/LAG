@@ -1,5 +1,6 @@
 <script setup>
 import NavBar from "./components/NavBar.vue";
+import Bottom from "./components/Bottom.vue";
 import { provideI18n } from "./i18nPlugin";
 import cn from "./i18n/cn";
 import en from "./i18n/en";
@@ -31,10 +32,16 @@ provideI18n({
     <div class="main">
       <router-view> </router-view>
     </div>
+    <Bottom class="bottom" />
   </div>
 </template>
 
 <style>
+.bottom {
+  text-align: center;
+  color: white;
+  background-color: black;
+}
 .main {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -42,6 +49,7 @@ provideI18n({
   text-align: center;
   color: white;
   background-color: black;
+  overflow: hidden;
   /* color: #2c3e50; */
   /* margin-top: 60px; */
 }

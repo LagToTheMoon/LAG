@@ -35,7 +35,6 @@
       </div>
       <div class="p-col"></div>
     </div> -->
-    <Bottom />
   </div>
 </template>
 

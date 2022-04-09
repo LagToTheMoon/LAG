@@ -158,7 +158,6 @@
       </div>
       <div class="p-col"></div>
     </div> -->
-    <Bottom />
   </div>
 </template>
 
@@ -174,7 +173,6 @@ import {
 } from "vue";
 import InputText from "primevue/inputtext";
 import ProgressBar from "primevue/progressbar";
-import logo from "../assets/logo.png";
 import fly from "../assets/fly.png";
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
 import Chip from "primevue/chip";
@@ -182,7 +180,6 @@ import Sidebar from "primevue/sidebar";
 import Button from "primevue/button";
 import TimeScroll from "../components/TimeScroll.vue";
 import YtVideo from "../components/YtVideo.vue";
-import Bottom from "../components/Bottom.vue";
 import Describe from "../components/Describe.vue";
 import Subject from "../components/Subject.vue";
 import Video from "../assets/LAG.mp4";
@@ -191,6 +188,7 @@ import os from "../assets/os.png";
 import knight from "../assets/knight.png";
 import liang from "../assets/liang.png";
 import shunichiro from "../assets/shunichiro.jpeg";
+import meme from "../assets/meme.png";
 import { useStore } from "vuex";
 import { useI18n } from "../i18nPlugin";
 
@@ -228,7 +226,7 @@ const data = reactive({
   knight: false,
   pfp: [
     { key: "🔮 LiangYu | Demi | LAG", value: liang },
-    { key: "MeMe", value: knight },
+    { key: "Meme_C8763", value: meme },
     { key: "shunichiro.icp", value: shunichiro },
   ],
   knightList: [],

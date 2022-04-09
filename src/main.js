@@ -12,10 +12,16 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 library.add(faPhone);
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import VueGoogleMaps from "@fawmi/vue-google-maps";
 
 createApp(App)
   .use(router)
   .use(store)
   .use(PrimeVue)
+  .use(VueGoogleMaps, {
+    load: {
+      key: "AIzaSyBfObO7JbRStWPBd2D369SJJedPM0voITg",
+    },
+  })
   .use(FontAwesomeIcon)
   .mount("#app");

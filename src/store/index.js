@@ -15,8 +15,16 @@ export default createStore({
       PieChart: {},
       BarChart: {},
     },
+    contestData: {
+      PieChart: {},
+      BarChart: {},
+      LineChart: {},
+    },
   },
   mutations: {
+    set_contest_data(state, contestData) {
+      state.contestData = contestData;
+    },
     set_case_data(state, caseData) {
       state.caseData = caseData;
     },

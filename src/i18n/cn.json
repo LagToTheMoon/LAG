@@ -1,4 +1,209 @@
 {
+  "Contest": {
+    "Vote": "藝術競賽(投票)",
+    "Title": "藝術競賽",
+    "BarChart": {
+      "id": "bar",
+      "type": "bar",
+      "options": {
+        "min": 0,
+        "max": 100,
+        "responsive": true,
+        "plugins": {
+          "legend": {
+            "labels": {
+              "color": "balck"
+            },
+            "position": "top"
+          }
+        },
+        "scales": {
+          "x": {
+            "ticks": {
+              "color": "balck"
+            }
+          },
+          "y": {
+            "min": 0,
+            "max": 100,
+            "ticks": {
+              "color": "balck"
+            }
+          }
+        }
+      },
+      "data": {
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O"
+        ],
+        "datasets": [
+          {
+            "label": "投票數",
+            "backgroundColor": ["#F50002"],
+            "data": [18, 38, 11, 13, 9, 33, 30, 5, 38, 71, 36, 64, 19, 65, 16]
+          },
+          {
+            "label": "總票數",
+            "backgroundColor": ["#1abc9c"],
+            "data": [
+              466, 466, 466, 466, 466, 466, 466, 466, 466, 466, 466, 466, 466,
+              466, 466
+            ]
+          }
+        ]
+      }
+    },
+    "PieChart": {
+      "type": "pie",
+      "options": {
+        "min": 0,
+        "max": 100,
+        "responsive": true,
+        "plugins": {
+          "legend": {
+            "labels": {
+              "color": "balck"
+            },
+            "position": "bottom"
+          }
+        }
+      },
+      "data": {
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O"
+        ],
+        "datasets": [
+          {
+            "backgroundColor": [
+              "rgba(191, 63, 63, 1)",
+              "rgba(191, 127, 63, 1)",
+              "rgba(127, 191, 63, 1)",
+              "rgba(63, 191, 191, 1)",
+              "rgba(63, 63, 191, 1)",
+              "rgba(191, 63, 127, 1)",
+              "rgba(191, 191, 63, 1)",
+              "rgba(127, 102, 53, 1)",
+              "rgba(242, 58, 150, 1)",
+              "rgba(58, 242, 217, 1)",
+              "rgba(58, 184, 242, 1)",
+              "rgba(242, 58, 184, 1)",
+              "rgba(242, 211, 58, 1)",
+              "rgba(242, 135, 58, 1)",
+              "rgba(242, 79, 58, 1)"
+            ],
+            "data": [18, 38, 11, 13, 9, 33, 30, 5, 38, 71, 36, 64, 19, 65, 16]
+          }
+        ]
+      }
+    },
+    "LineChart": {
+      "id": "line",
+      "type": "line",
+      "data": {
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G",
+          "H",
+          "I",
+          "J",
+          "K",
+          "L",
+          "M",
+          "N",
+          "O"
+        ],
+        "datasets": [
+          {
+            "label": "投票",
+            "data": [18, 38, 11, 13, 9, 33, 30, 5, 38, 71, 36, 64, 19, 65, 16],
+            "backgroundColor": [
+              "rgba(191, 63, 63, 0.2)",
+              "rgba(191, 127, 63, 0.2)",
+              "rgba(127, 191, 63, 0.2)",
+              "rgba(63, 191, 191, 0.2)",
+              "rgba(63, 63, 191, 0.2)",
+              "rgba(191, 63, 127, 0.2)",
+              "rgba(191, 191, 63, 0.2)",
+              "rgba(127, 102, 53, 0.2)",
+              "rgba(242, 58, 150, 0.2)",
+              "rgba(58, 242, 217, 0.2)",
+              "rgba(58, 184, 242, 0.2)",
+              "rgba(242, 58, 184, 0.2)",
+              "rgba(242, 211, 58, 0.2)",
+              "rgba(242, 135, 58, 0.2)",
+              "rgba(242, 79, 58, 0.2)"
+            ],
+            "borderColor": [
+              "rgba(191, 63, 63, 1)",
+              "rgba(191, 127, 63, 1)",
+              "rgba(127, 191, 63, 1)",
+              "rgba(63, 191, 191, 1)",
+              "rgba(63, 63, 191, 1)",
+              "rgba(191, 63, 127, 1)",
+              "rgba(191, 191, 63, 1)",
+              "rgba(127, 102, 53, 1)",
+              "rgba(242, 58, 150, 1)",
+              "rgba(58, 242, 217, 1)",
+              "rgba(58, 184, 242, 1)",
+              "rgba(242, 58, 184, 1)",
+              "rgba(242, 211, 58, 1)",
+              "rgba(242, 135, 58, 1)",
+              "rgba(242, 79, 58, 1)"
+            ],
+            "borderWidth": 1
+          }
+        ]
+      },
+      "options": {
+        "plugins": {
+          "zoom": {
+            "zoom": {
+              "wheel": {
+                "enabled": true
+              },
+              "pinch": {
+                "enabled": true
+              },
+              "mode": "y"
+            }
+          }
+        }
+      }
+    }
+  },
   "Knight": {
     "DialogTitle": {
       "Title": "介紹",
@@ -13,7 +218,7 @@
           "Twitter": "https://twitter.com/chenlia48120395",
           "Instagram": "https://www.instagram.com/chenliangyu19921226/",
           "Oncyber": "https://oncyber.io/liang",
-          "Money": 60,
+          "Money": 18,
           "OpenSea": "",
           "PieChart": {
             "type": "pie",
@@ -42,12 +247,12 @@
           }
         },
         {
-          "Name": "MeMe",
-          "Describe": "收集美感，點綴人生",
-          "Twitter": "https://twitter.com/chenlia48120395",
-          "Instagram": "https://www.instagram.com/chenliangyu19921226/",
-          "Oncyber": "https://oncyber.io/meme0519",
-          "Money": 100,
+          "Name": "Meme_C8763",
+          "Describe": "動漫NFT愛好者，喜歡做Meme，鑽石手的父親。",
+          "Twitter": "https://twitter.com/sam613526",
+          "Instagram": "",
+          "Oncyber": "https://oncyber.io/meme_room",
+          "Money": 30,
           "OpenSea": "",
           "PieChart": {
             "type": "pie",
@@ -69,7 +274,7 @@
               "datasets": [
                 {
                   "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
-                  "data": [90, 80, 18]
+                  "data": [80, 100, 30]
                 }
               ]
             }

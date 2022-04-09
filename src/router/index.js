@@ -6,6 +6,8 @@ import {
 
 import Home from "../views/Home.vue";
 import Knight from "../views/Knight.vue";
+import Meme from "../views/Meme.vue";
+import Contest from "../views/Contest.vue";
 
 const routes = [
   {
@@ -17,6 +19,16 @@ const routes = [
     path: "/knight",
     name: "Knight",
     component: Knight,
+  },
+  {
+    path: "/meme",
+    name: "Meme",
+    component: Meme,
+  },
+  {
+    path: "/contest",
+    name: "Contest",
+    component: Contest,
   },
 ];
 

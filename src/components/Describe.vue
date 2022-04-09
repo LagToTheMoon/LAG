@@ -41,7 +41,7 @@ const i18n = useI18n();
       </a>
     </div>
     <div class="p-col-12 p-md-6 describe_img">
-      <img src="../assets/abao.jpeg" />
+      <!-- <img src="../assets/abao.jpeg" /> -->
     </div>
   </div>
 </template>
