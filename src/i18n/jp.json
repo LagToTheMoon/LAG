@@ -1,4 +1,50 @@
 {
+  "Meme": {
+    "DialogTitle": {
+      "Name": "名称",
+      "TotalPower": "統合された能力",
+      "Title": "はじめに",
+      "Media": "ノーティファイヤー"
+    },
+    "Monster": [
+      {
+        "Name": "Onamushi",
+        "Creater": "ともてゃ🍑 | Onamushi's father",
+        "CreaterTwitter": "https://twitter.com/TOMOCHAN_NFT",
+        "Describe": "世界各地や人間の体内に潜み、未知の能力を持ち、極めて狡猾で知能の高い、謎の昆虫型クリーチャー",
+        "Twitter": "",
+        "TotalPower": 77,
+        "Power": 80,
+        "Speed": 50,
+        "Smart": 100,
+        "PieChart": {
+          "type": "pie",
+          "options": {
+            "min": 0,
+            "max": 100,
+            "responsive": true,
+            "plugins": {
+              "legend": {
+                "labels": {
+                  "color": "balck"
+                },
+                "position": "bottom"
+              }
+            }
+          },
+          "data": {
+            "labels": ["強さ", "スピード", "インテリジェンス"],
+            "datasets": [
+              {
+                "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
+                "data": [80, 50, 100]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
   "Contest": {
     "Vote": "アートコンテスト(投票)",
     "Title": "アートコンテスト",

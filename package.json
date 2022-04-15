@@ -17,6 +17,7 @@
     "chart.js": "^3.4.1",
     "firebase": "^9.6.9",
     "gsap": "^3.9.1",
+    "moralis": "^1.5.9",
     "nawadash": "^1.1.7",
     "primeflex": "^2.0.0",
     "primeicons": "^5.0.0",
@@ -27,7 +28,8 @@
     "vue-i18n": "^8.26.7",
     "vue-router": "^4.0.12",
     "vue3-geolocation": "^1.0.0",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "web3": "^1.7.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.9.3",

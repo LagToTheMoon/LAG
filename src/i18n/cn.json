@@ -1,4 +1,51 @@
 {
+  "Meme": {
+    "DialogTitle": {
+      "Name": "名稱",
+      "TotalPower": "綜合能力",
+      "Title": "介紹",
+      "Media": "通報者"
+    },
+    "Monster": [
+      {
+        "Name": "Onamushi",
+        "Creater": "ともてゃ🍑 | Onamushi's father",
+        "CreaterTwitter": "https://twitter.com/TOMOCHAN_NFT",
+        "Describe": "昆蟲型態迷因生物，能力未知，極為狡猾聰明，藏身於世界各地與人類身體中",
+        "Twitter": "",
+        "TotalPower": 77,
+        "Power": 80,
+        "Speed": 50,
+        "Smart": 100,
+        "OpenSea": "",
+        "PieChart": {
+          "type": "pie",
+          "options": {
+            "min": 0,
+            "max": 100,
+            "responsive": true,
+            "plugins": {
+              "legend": {
+                "labels": {
+                  "color": "balck"
+                },
+                "position": "bottom"
+              }
+            }
+          },
+          "data": {
+            "labels": ["力量", "速度", "智力"],
+            "datasets": [
+              {
+                "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
+                "data": [80, 50, 100]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
   "Contest": {
     "Vote": "藝術競賽(投票)",
     "Title": "藝術競賽",

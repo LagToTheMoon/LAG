@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <br />
-    <br />
-    <br />
-    <br />
+  <div class="m-top">
     <!-- <YtVideo
       class="p-mt-6"
       video_stream="https://www.youtube.com/embed/5nioFOZKOPU?rel=0&modestbranding=1&loop=1&playlist=5nioFOZKOPU&autoplay=1&mute=1&controls=0"
@@ -126,7 +122,7 @@
         :image="store.state.caseData.img"
         class="mr-2 mb-2"
       />
-      <marquee
+      <!-- <marquee
         direction="right"
         height="30"
         width="65"
@@ -134,9 +130,8 @@
         behavior="alternate"
       >
         <img :src="fly" class="fly" />
-        <!-- <img :src="fly" class="fly" />
-        <img :src="fly" class="fly" /> -->
-      </marquee>
+       
+      </marquee> -->
     </div>
     <div class="p-mt-2" style="width: 100%">
       <iframe
@@ -349,6 +344,14 @@ watch(
 </script>
 
 <style>
+.m-top {
+  margin-top: 80px;
+}
+@media screen and (max-device-width: 900px) {
+  .m-top {
+    margin-top: 10px;
+  }
+}
 .fly {
   height: 25px;
   width: 25px;

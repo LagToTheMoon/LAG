@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!data.show" style="margin-top: 80px">
+    <div v-if="!data.show" class="m-top">
       <div style="width: 100%; text-align: left; height: 45px">
         <Button
           class="p-ml-2 p-mr-2 mr-2 mb-2"
@@ -14,29 +14,110 @@
           style="line-height: 20px"
           @click="Choose"
         />
-        <!-- <Chip
-          :label="store.state.caseData.name"
-          :image="store.state.caseData.img"
+        <Chip
+          :label="store.state.memeData.name"
+          :image="store.state.memeData.img"
           class="mr-2 mb-2"
-        /> -->
-        <marquee
-          direction="right"
-          height="30"
-          width="65"
-          scrollamount="5"
-          behavior="alternate"
-        >
-          <img :src="fly" class="fly" />
-          <!-- <img :src="fly" class="fly" />
-        <img :src="fly" class="fly" /> -->
-        </marquee>
+        />
       </div>
-      <Sidebar v-model:visible="data.flyshow"> </Sidebar>
+      <Sidebar v-model:visible="data.flyshow">
+        <div class="p-col-12">
+          <Avatar
+            :image="store.state.memeData.img"
+            class="mr-2"
+            size="xlarge"
+            shape="circle"
+          />
+          <div class="p-mt-1">
+            <span>
+              {{ store.state.memeData.name }}
+            </span>
+          </div>
+        </div>
+        <div class="p-col-12">
+          <i class="pi pi-eye p-mr-1"></i
+          >{{ i18n.$t("Meme").DialogTitle.Title }}
+        </div>
+        <div
+          class="p-col-12 p-mb-1"
+          v-html="store.state.memeData.discribe"
+        ></div>
+        <div class="p-col-12">
+          <i class="pi pi-users p-mr-1"></i
+          >{{ i18n.$t("Meme").DialogTitle.Media }}
+        </div>
+        <div class="p-col-12 p-mb-2">
+          {{ store.state.memeData.creater }}
+          <a
+            v-if="store.state.memeData.creater_tw != ''"
+            target="_blank"
+            class="p-mr-3 pointer"
+            :href="store.state.memeData.creater_tw"
+          >
+            <i class="pi pi-twitter" style="font-size: 2rem; color: black"></i>
+          </a>
+          <!-- <a
+          target="_blank"
+          class="p-mr-3 pointer"
+          href="https://opensea.io/collection/love-addicted-girls"
+        >
+          <img :src="os" class="knight" />
+        </a> -->
+        </div>
+
+        <div class="p-col-12">
+          <i class="pi pi-chart-line p-mr-1"></i
+          >{{ i18n.$t("Knight").DialogTitle.Effect }}
+        </div>
+        <div class="p-grid">
+          <div class="p-col-12">
+            <vue3-chart-js v-bind="{ ...store.state.memeData.PieChart }" />
+          </div>
+        </div>
+      </Sidebar>
       <Sidebar v-model:visible="data.choose" position="right">
         <div class="p-grid">
           <div class="p-col-12">
-            <label for="place">{{ i18n.$t("Knight").DialogTitle.Name }}</label>
-            <InputText class="p-ml-1" id="place" v-model.trim="data.place" />
+            <label for="place">{{ i18n.$t("Meme").DialogTitle.Name }}</label>
+            <InputText
+              class="p-ml-1"
+              id="place"
+              v-model.trim="data.meme_name"
+            />
+          </div>
+          <div
+            class="p-col-12 p-grid p-mt-2 knightCard"
+            v-for="(item, index) in data.memeList"
+            @click="ChooseMeme(item)"
+          >
+            <div class="p-col-3">
+              <Avatar
+                :image="item.img"
+                class="mr-2"
+                size="xlarge"
+                shape="circle"
+              />
+            </div>
+            <div class="p-col-9">
+              <span class="p-ml-1">
+                {{ item.name }}
+                <a
+                  target="_blank"
+                  class="p-mr-3 pointer"
+                  :href="item.creater_tw"
+                >
+                  <i class="pi pi-twitter" style="color: black"></i>
+                </a> </span
+              ><br />
+              <span class="p-ml-1">{{
+                i18n.$t("Meme").DialogTitle.TotalPower
+              }}</span>
+              <ProgressBar
+                class="p-ml-1"
+                :value="item.total_power"
+                :showValue="false"
+              />
+            </div>
           </div>
         </div>
       </Sidebar>
@@ -60,7 +141,10 @@
                 <template #header>
                   <h3>{{ m.name }}</h3>
                   <div class="p-text-left">
-                    <i class="pi pi-calendar p-mr-1"></i>{{ m.date }}<br />
+                    <i class="pi pi-file p-mr-1"></i>{{ m.type }}
+                    <img height="20" :src="m.type_img" /><br />
+                    <i class="pi pi-calendar p-mr-1 p-mt-1"></i>{{ m.date
+                    }}<br />
                     <i class="pi pi-eye p-mr-1 p-mt-1"></i>{{ m.witness }}
                     <a
                       style="cursor: pointer"
@@ -104,21 +188,55 @@
 </template>
 
 <script setup>
-import { defineProps, reactive, onMounted } from "vue";
+import { defineProps, reactive, onMounted, onBeforeMount, watch } from "vue";
 import Chip from "primevue/chip";
 import InputText from "primevue/inputtext";
 import Avatar from "primevue/avatar";
 import Sidebar from "primevue/sidebar";
 import Button from "primevue/button";
+import ProgressBar from "primevue/progressbar";
 import fly from "../assets/fly.png";
 import fly1 from "../assets/fly1.jpg";
 import fly2 from "../assets/fly2.jpg";
+import fly3 from "../assets/fly3.png";
+import fly4 from "../assets/fly4.jpeg";
 import m1 from "../assets/m1.png";
-
+import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useI18n } from "../i18nPlugin";
 import Galleria from "primevue/galleria";
+import { useStore } from "vuex";
+
+const store = useStore();
+
+const mounted = onBeforeMount(async () => {
+  if (store.state.memeData.name == "") {
+    let tmpImg = "";
+    for (let i = 0; i < data.memePfp.length; i++) {
+      if (data.memePfp[i].key == i18n.$t("Meme").Monster[0].Name) {
+        tmpImg = data.memePfp[i].value;
+      }
+    }
+    let tmpData = {
+      name: i18n.$t("Meme").Monster[0].Name,
+      tw: i18n.$t("Meme").Monster[0].Twitter,
+      creater: i18n.$t("Meme").Monster[0].Creater,
+      creater_tw: i18n.$t("Meme").Monster[0].CreaterTwitter,
+      img: tmpImg,
+      total_power: i18n.$t("Meme").Monster[0].TotalPower,
+      power: i18n.$t("Meme").Monster[0].Power,
+      speed: i18n.$t("Meme").Monster[0].Speed,
+      smart: i18n.$t("Meme").Monster[0].Smart,
+      discribe: i18n.$t("Meme").Monster[0].Describe,
+      PieChart: i18n.$t("Meme").Monster[0].PieChart,
+    };
+    store.commit("set_meme_data", tmpData);
+  }
+
+  //   store.commit("set_product_data", i18n.$t("Home").ProductData);
+  //   store.commit("set_dialog_data", i18n.$t("Home").DialogData);
+});
 
 function openMarker(m) {
   if (m == null) {
@@ -132,6 +250,9 @@ function openMarker(m) {
 }
 const i18n = useI18n();
 const data = reactive({
+  meme_name: "",
+  memePfp: [{ key: "Onamushi", value: fly }],
+  memeList: [],
   clusterStyles: [
     {
       textColor: "white",
@@ -153,7 +274,8 @@ const data = reactive({
     {
       id: 1,
       name: "Butterfly",
-      type: "onamushi",
+      type: "Onamushi",
+      type_img: fly,
       witness: "LiangYu",
       twitter: "https://twitter.com/chenlia48120395",
       date: "2022-01-13~????-??-??",
@@ -165,8 +287,8 @@ const data = reactive({
           title: "Title 2",
         },
         {
-          itemImageSrc: fly,
-          thumbnailImageSrc: fly,
+          itemImageSrc: fly3,
+          thumbnailImageSrc: fly3,
           alt: "Description for Image 1",
           title: "Title 1",
         },
@@ -178,7 +300,8 @@ const data = reactive({
     {
       id: 2,
       name: "Mothman",
-      type: "onamushi",
+      type: "Onamushi",
+      type_img: fly,
       witness: "LiangYu",
       twitter: "https://twitter.com/chenlia48120395",
       date: "1966-11-12~1967-12-15",
@@ -190,8 +313,8 @@ const data = reactive({
           title: "Title 2",
         },
         {
-          itemImageSrc: fly,
-          thumbnailImageSrc: fly,
+          itemImageSrc: fly4,
+          thumbnailImageSrc: fly4,
           alt: "Description for Image 1",
           title: "Title 1",
         },
@@ -204,11 +327,118 @@ const data = reactive({
   center: { lat: 40.689247, lng: -74.044502 },
   zoom: 2,
 });
+watch(
+  () => data.meme_name,
+  () => {
+    let tmp = [];
+    for (let i = 0; i < i18n.$t("Meme").Monster.length; i++) {
+      if (
+        i18n
+          .$t("Meme")
+          .Monster[i].Name.toLowerCase()
+          .includes(data.meme_name.toLowerCase())
+      ) {
+        let tmpImg = "";
+        for (let j = 0; j < data.memePfp.length; j++) {
+          if (data.memePfp[j].key == i18n.$t("Meme").Monster[i].Name) {
+            tmpImg = data.memePfp[j].value;
+          }
+        }
+        tmp.push({
+          name: i18n.$t("Meme").Monster[i].Name,
+          tw: i18n.$t("Meme").Monster[i].Twitter,
+          creater: i18n.$t("Meme").Monster[i].Creater,
+          creater_tw: i18n.$t("Meme").Monster[i].CreaterTwitter,
+          img: tmpImg,
+          total_power: i18n.$t("Meme").Monster[i].TotalPower,
+          power: i18n.$t("Meme").Monster[i].Power,
+          speed: i18n.$t("Meme").Monster[i].Speed,
+          smart: i18n.$t("Meme").Monster[i].Smart,
+          discribe: i18n.$t("Meme").Monster[i].Describe,
+          PieChart: i18n.$t("Meme").Monster[i].PieChart,
+        });
+      }
+    }
+    data.memeList = tmp;
+  }
+);
+
 function Detail() {
   data.flyshow = true;
+  let tmpImg = "";
+  for (let i = 0; i < data.memePfp.length; i++) {
+    if (data.memePfp[i].key == store.state.memeData.name) {
+      tmpImg = data.memePfp[i].value;
+    }
+  }
+  for (let i = 0; i < i18n.$t("Meme").Monster.length; i++) {
+    if (i18n.$t("Meme").Monster[i].Name == store.state.memeData.name) {
+      let tmpData = {
+        name: i18n.$t("Meme").Monster[i].Name,
+        tw: i18n.$t("Meme").Monster[i].Twitter,
+        creater: i18n.$t("Meme").Monster[i].Creater,
+        creater_tw: i18n.$t("Meme").Monster[i].CreaterTwitter,
+        img: tmpImg,
+        total_power: i18n.$t("Meme").Monster[i].TotalPower,
+        power: i18n.$t("Meme").Monster[i].Power,
+        speed: i18n.$t("Meme").Monster[i].Speed,
+        smart: i18n.$t("Meme").Monster[i].Smart,
+        discribe: i18n.$t("Meme").Monster[i].Describe,
+        PieChart: i18n.$t("Meme").Monster[i].PieChart,
+      };
+      store.commit("set_meme_data", tmpData);
+    }
+  }
 }
 function Choose() {
   data.choose = true;
+
+  let tmp = [];
+  for (let i = 0; i < i18n.$t("Meme").Monster.length; i++) {
+    let tmpImg = "";
+    for (let j = 0; j < data.memePfp.length; j++) {
+      if (data.memePfp[j].key == i18n.$t("Meme").Monster[i].Name) {
+        tmpImg = data.memePfp[j].value;
+      }
+    }
+    tmp.push({
+      name: i18n.$t("Meme").Monster[i].Name,
+      tw: i18n.$t("Meme").Monster[i].Twitter,
+      creater: i18n.$t("Meme").Monster[i].Creater,
+      creater_tw: i18n.$t("Meme").Monster[i].CreaterTwitter,
+      img: tmpImg,
+      total_power: i18n.$t("Meme").Monster[i].TotalPower,
+      power: i18n.$t("Meme").Monster[i].Power,
+      speed: i18n.$t("Meme").Monster[i].Speed,
+      smart: i18n.$t("Meme").Monster[i].Smart,
+      discribe: i18n.$t("Meme").Monster[i].Describe,
+      PieChart: i18n.$t("Meme").Monster[i].PieChart,
+    });
+  }
+  data.memeList = tmp;
+}
+
+function ChooseMeme(meme) {
+  let tmpImg = "";
+  for (let i = 0; i < data.memePfp.length; i++) {
+    if (data.memePfp[i].key == meme.name) {
+      tmpImg = data.memePfp[i].value;
+    }
+  }
+  let tmpData = {
+    name: meme.name,
+    tw: meme.tw,
+    creater: meme.creater,
+    creater_tw: meme.creater_tw,
+    img: tmpImg,
+    total_power: meme.total_power,
+    power: meme.power,
+    speed: meme.speed,
+    smart: meme.smart,
+    discribe: meme.discribe,
+    PieChart: meme.PieChart,
+  };
+  store.commit("set_meme_data", tmpData);
 }
 
 // Scenes
@@ -322,6 +552,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.m-top {
+  margin-top: 80px;
+}
+@media screen and (max-device-width: 900px) {
+  .m-top {
+    margin-top: 10px;
+  }
+}
 .vue-map-container {
   height: calc(100vh - 125px);
 }

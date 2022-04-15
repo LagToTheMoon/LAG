@@ -14,6 +14,7 @@ import tw from "../assets/tw.png";
 import dis from "../assets/dis1.png";
 import art from "../assets/art.png";
 import x_file from "../assets/x_file.png";
+import vote from "../assets/vote.png";
 
 let cookieSetting = new cookie();
 const i18n = useI18n();
@@ -47,6 +48,11 @@ const data = reactive({
       to: "contest",
       img: art,
       txt: "Contest",
+    },
+    {
+      to: "vote",
+      img: vote,
+      txt: "Vote",
     },
   ],
 });

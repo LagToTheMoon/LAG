@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div v-if="!data.showAnima">
-      <br />
-      <br />
-      <br />
+    <div v-if="!data.showAnima" class="m-top">
       <Sidebar v-model:visible="data.show"> </Sidebar>
       <Sidebar v-model:visible="data.chart" position="right">
         <h2 class="p-text-center">
@@ -670,6 +667,14 @@ const data = reactive({
 </script>
 
 <style lang="scss" scoped>
+.m-top {
+  margin-top: 80px;
+}
+@media screen and (max-device-width: 900px) {
+  .m-top {
+    margin-top: 10px;
+  }
+}
 .myDIV {
   // width: 300px;
   // height: 200px;

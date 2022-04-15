@@ -15,6 +15,20 @@ export default createStore({
       PieChart: {},
       BarChart: {},
     },
+    memeData: {
+      name: "",
+      tw: "",
+      creater: "",
+      creater_tw: "",
+      img: "",
+      total_power: "",
+      power: "",
+      speed: "",
+      smart: "",
+      discribe: "",
+      PieChart: {},
+      BarChart: {},
+    },
     contestData: {
       PieChart: {},
       BarChart: {},
@@ -22,6 +36,9 @@ export default createStore({
     },
   },
   mutations: {
+    set_meme_data(state, memeData) {
+      state.memeData = memeData;
+    },
     set_contest_data(state, contestData) {
       state.contestData = contestData;
     },

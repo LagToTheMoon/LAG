@@ -1,4 +1,51 @@
 {
+  "Meme": {
+    "DialogTitle": {
+      "Name": "Name",
+      "TotalPower": "Total Power",
+      "Title": "Introduction",
+      "Media": "Notifier"
+    },
+    "Monster": [
+      {
+        "Name": "Onamushi",
+        "Creater": "ともてゃ🍑 | Onamushi's father",
+        "CreaterTwitter": "https://twitter.com/TOMOCHAN_NFT",
+        "Describe": "Insect type fan creatures, unknown ability, extremely cunning and intelligent, hiding in the world and human bodies",
+        "Twitter": "",
+        "TotalPower": 77,
+        "Power": 80,
+        "Speed": 50,
+        "Smart": 100,
+        "OpenSea": "",
+        "PieChart": {
+          "type": "pie",
+          "options": {
+            "min": 0,
+            "max": 100,
+            "responsive": true,
+            "plugins": {
+              "legend": {
+                "labels": {
+                  "color": "balck"
+                },
+                "position": "bottom"
+              }
+            }
+          },
+          "data": {
+            "labels": ["Strength", "Speed", "Intelligence"],
+            "datasets": [
+              {
+                "backgroundColor": ["#F50002", "#1abc9c", "#00D8FF"],
+                "data": [80, 50, 100]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
   "Contest": {
     "Vote": "Art Contest(Vote)",
     "Title": "Art Contest",
