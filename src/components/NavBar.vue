@@ -59,7 +59,11 @@ const data = reactive({
 </script>
 
 <template>
-  <Menubar class="toolbar" :model="data.items">
+  <Menubar
+    class="toolbar"
+    :model="data.items"
+    style="position: fixed; z-index: 1001"
+  >
     <template #start>
       <img
         alt="logo"

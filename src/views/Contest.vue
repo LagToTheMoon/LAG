@@ -12,7 +12,6 @@
       </video>
     </div>
     <div v-if="!data.showAnima" class="m-top">
-      <Music />
       <Sidebar v-model:visible="data.show"> </Sidebar>
       <Sidebar v-model:visible="data.chart" position="right">
         <h2 class="p-text-center">
@@ -182,7 +181,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from "three";
 
 import fly from "../assets/fly.png";
-import Music from "../components/Music.vue";
 import Button from "primevue/button";
 import win from "../assets/win.png";
 import win2 from "../assets/win2.png";
@@ -225,7 +223,7 @@ onMounted(() => {
   data.time = setTimeout(() => {
     data.showAnima = false;
     clearTimeout(data.time);
-  }, 3000);
+  }, 5000);
   //   store.commit("set_product_data", i18n.$t("Home").ProductData);
   //   store.commit("set_dialog_data", i18n.$t("Home").DialogData);
 });
@@ -685,7 +683,7 @@ const data = reactive({
 }
 @media screen and (max-device-width: 900px) {
   .m-top {
-    margin-top: 10px;
+    margin-top: 80px;
   }
 }
 .myDIV {

@@ -1,20 +1,24 @@
 <template>
   <div
     class="p-ml-2 music"
-    style="background: white; color: black; width: 400px; border-radius: 15px"
+    :style="
+      state.show
+        ? 'background: white; color: black; width: 360px; border-radius: 15px'
+        : 'background: white; color: black; width: 117px; border-radius: 15px'
+    "
   >
     <div class="p-text-right p-pr-1 p-pt-1">
       <i
-        @click="hide_music()"
-        v-if="!show"
-        style="font-size: 1.5rem; cursor: pointer"
-        class="pi pi-minus-circle"
-      ></i>
-      <i
-        @click="show_music()"
-        v-else
+        v-if="!state.show"
+        @click="showMusic()"
         style="font-size: 1.5rem; cursor: pointer"
         class="pi pi-plus-circle"
+      ></i>
+      <i
+        v-else
+        @click="hideMusic()"
+        style="font-size: 1.5rem; cursor: pointer"
+        class="pi pi-minus-circle"
       ></i>
     </div>
     <div class="p-grid">
@@ -28,9 +32,15 @@
             style="border-radius: 15px"
             class="p-mr-2 p-mb-3 p-ml-2"
             src="../assets/music_img.gif"
-            width="120"
+            width="100"
           />
-          <marquee direction="right" height="65" width="90" scrollamount="5">
+          <marquee
+            :class="state.show ? '' : 'p-d-none'"
+            direction="right"
+            height="60"
+            width="80"
+            scrollamount="5"
+          >
             <span style="font-weight: bold; font-size: 18px"
               >{{ audio.name }}-{{ audio.artist }}</span
             >
@@ -38,8 +48,12 @@
         </div>
       </div>
       <div
-        class="p-col-5 p-text-right p-pr-3"
-        style="padding-top: 1.5rem !important"
+        :class="
+          state.show
+            ? 'p-col-5 p-text-right p-pr-3'
+            : 'p-col-5 p-text-right p-pr-3 p-d-none'
+        "
+        style="padding-top: 1.2rem !important"
       >
         <Button
           @click="prevButton ? previous() : ''"
@@ -442,7 +456,6 @@ export default {
     //   this.volBar.offsetWidth * barWidth + this.volBar.offsetWidth * 0.05 - 25;
   },
   setup() {
-    const show = true;
     const audios = ref([
       {
         name: "炎",
@@ -474,12 +487,13 @@ export default {
     const mutePlayer = ref(false);
     const state = reactive({
       audioPlaying: [],
+      show: true,
     });
-    function hide_music() {
-      show = false;
+    function hideMusic() {
+      state.show = false;
     }
-    function show_music() {
-      show = true;
+    function showMusic() {
+      state.show = true;
     }
     function formatTime(secs) {
       var minutes = Math.floor(secs / 60) || 0;
@@ -688,6 +702,8 @@ export default {
       sliderBtnVol,
       nextButton,
       prevButton,
+      showMusic,
+      hideMusic,
     };
   },
 };
@@ -698,6 +714,6 @@ export default {
   position: fixed;
   bottom: 13px;
   right: 90;
-  z-index: 9999;
+  z-index: 999;
 }
 </style>

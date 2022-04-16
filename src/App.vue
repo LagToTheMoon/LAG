@@ -2,6 +2,7 @@
 import NavBar from "./components/NavBar.vue";
 import Bottom from "./components/Bottom.vue";
 import { provideI18n } from "./i18nPlugin";
+import Music from "./components/Music.vue";
 import cn from "./i18n/cn";
 import en from "./i18n/en";
 import fn from "./i18n/fn";
@@ -28,6 +29,7 @@ provideI18n({
 
 <template>
   <div>
+    <Music />
     <NavBar />
     <div class="main">
       <router-view> </router-view>

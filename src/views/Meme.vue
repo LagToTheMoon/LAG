@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-if="!data.show" class="m-top">
-      <Music />
       <div style="width: 100%; text-align: left; height: 45px">
         <Button
           class="p-ml-2 p-mr-2 mr-2 mb-2"
@@ -184,13 +183,17 @@
         </GMapCluster>
       </GMapMap>
     </div>
-    <div v-if="data.show" ref="container2" id="container2"></div>
+    <div
+      v-if="data.show"
+      style="position: fixed; z-index: 1000"
+      ref="container2"
+      id="container2"
+    ></div>
   </div>
 </template>
 
 <script setup>
 import { defineProps, reactive, onMounted, onBeforeMount, watch } from "vue";
-import Music from "../components/Music.vue";
 import Chip from "primevue/chip";
 import InputText from "primevue/inputtext";
 import Avatar from "primevue/avatar";
@@ -296,7 +299,7 @@ const data = reactive({
         },
       ],
       description:
-        ".. ... / - .... .. ... / -.-. --- .-. .-. . .-.. .- - .. --- -. --..-- / - .... . .-. . / .- .-. . / ... --- -- . / ... - .-. .- -. --. . / - .... .. -. --. ... / .... .- .--. .--. . -. .. -. --. / .- .-. --- ..- -. -.. / - .... . / .-- --- .-. .-.. -..",
+        "A certain kind of alien creature, very intelligent, and will be parasitic in the human body, reading human memory, need special food to survive, known to appear in the DC universe was found",
       position: { lat: 40.689247, lng: -74.044502 },
     },
     {
@@ -559,7 +562,7 @@ onMounted(() => {
 }
 @media screen and (max-device-width: 900px) {
   .m-top {
-    margin-top: 10px;
+    margin-top: 80px;
   }
 }
 .vue-map-container {

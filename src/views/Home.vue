@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Music />
     <br />
     <br />
     <br />
@@ -48,7 +47,6 @@ import {
   toRefs,
   computed,
 } from "vue";
-import Music from "../components/Music.vue";
 import TimeScroll from "../components/TimeScroll.vue";
 import YtVideo from "../components/YtVideo.vue";
 import Bottom from "../components/Bottom.vue";

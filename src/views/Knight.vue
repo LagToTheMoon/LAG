@@ -1,6 +1,5 @@
 <template>
   <div class="m-top">
-    <Music />
     <!-- <YtVideo
       class="p-mt-6"
       video_stream="https://www.youtube.com/embed/5nioFOZKOPU?rel=0&modestbranding=1&loop=1&playlist=5nioFOZKOPU&autoplay=1&mute=1&controls=0"
@@ -167,7 +166,6 @@ import {
   computed,
   watch,
 } from "vue";
-import Music from "../components/Music.vue";
 import InputText from "primevue/inputtext";
 import ProgressBar from "primevue/progressbar";
 import fly from "../assets/fly.png";
@@ -351,7 +349,7 @@ watch(
 }
 @media screen and (max-device-width: 900px) {
   .m-top {
-    margin-top: 10px;
+    margin-top: 80px;
   }
 }
 .fly {
