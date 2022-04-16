@@ -17,6 +17,7 @@
     "chart.js": "^3.4.1",
     "firebase": "^9.6.9",
     "gsap": "^3.9.1",
+    "howler": "^2.2.3",
     "moralis": "^1.5.9",
     "nawadash": "^1.1.7",
     "primeflex": "^2.0.0",

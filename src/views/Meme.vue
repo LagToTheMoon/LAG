@@ -1,6 +1,7 @@
 <template>
   <div>
     <div v-if="!data.show" class="m-top">
+      <Music />
       <div style="width: 100%; text-align: left; height: 45px">
         <Button
           class="p-ml-2 p-mr-2 mr-2 mb-2"
@@ -189,6 +190,7 @@
 
 <script setup>
 import { defineProps, reactive, onMounted, onBeforeMount, watch } from "vue";
+import Music from "../components/Music.vue";
 import Chip from "primevue/chip";
 import InputText from "primevue/inputtext";
 import Avatar from "primevue/avatar";

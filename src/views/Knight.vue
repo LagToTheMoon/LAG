@@ -1,5 +1,6 @@
 <template>
   <div class="m-top">
+    <Music />
     <!-- <YtVideo
       class="p-mt-6"
       video_stream="https://www.youtube.com/embed/5nioFOZKOPU?rel=0&modestbranding=1&loop=1&playlist=5nioFOZKOPU&autoplay=1&mute=1&controls=0"
@@ -166,6 +167,7 @@ import {
   computed,
   watch,
 } from "vue";
+import Music from "../components/Music.vue";
 import InputText from "primevue/inputtext";
 import ProgressBar from "primevue/progressbar";
 import fly from "../assets/fly.png";
@@ -220,7 +222,7 @@ const data = reactive({
   choose: false,
   knight: false,
   pfp: [
-    { key: "🔮 LiangYu | Demi | LAG", value: liang },
+    { key: "🔮 LiangYu", value: liang },
     { key: "Meme_C8763", value: meme },
     { key: "shunichiro.icp", value: shunichiro },
   ],

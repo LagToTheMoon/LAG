@@ -1,6 +1,18 @@
 <template>
   <div>
+    <div v-if="data.showAnima" class="m-top">
+      <video
+        style="width: 100vw; height: calc(100vh - 80px)"
+        autoplay
+        muted
+        loop
+      >
+        <source :src="Video" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <div v-if="!data.showAnima" class="m-top">
+      <Music />
       <Sidebar v-model:visible="data.show"> </Sidebar>
       <Sidebar v-model:visible="data.chart" position="right">
         <h2 class="p-text-center">
@@ -158,6 +170,7 @@ import {
   toRefs,
   computed,
 } from "vue";
+import Video from "../assets/LAG1.mp4";
 import Carousel from "primevue/carousel";
 import Sidebar from "primevue/sidebar";
 import Vue3ChartJs from "@j-t-mcc/vue3-chartjs";
@@ -169,7 +182,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from "three";
 
 import fly from "../assets/fly.png";
-
+import Music from "../components/Music.vue";
 import Button from "primevue/button";
 import win from "../assets/win.png";
 import win2 from "../assets/win2.png";
@@ -209,10 +222,10 @@ const store = useStore();
 // eslint-disable-next-line no-unused-vars
 onMounted(() => {
   // init();
-  // data.time = setTimeout(() => {
-  //   data.showAnima = false;
-  //   clearTimeout(data.time);
-  // }, 2500);
+  data.time = setTimeout(() => {
+    data.showAnima = false;
+    clearTimeout(data.time);
+  }, 3000);
   //   store.commit("set_product_data", i18n.$t("Home").ProductData);
   //   store.commit("set_dialog_data", i18n.$t("Home").DialogData);
 });
@@ -318,7 +331,7 @@ function initCamera() {
 }
 const data = reactive({
   time: null,
-  showAnima: false,
+  showAnima: true,
   chart_data: {
     BarChart: {
       id: "bar",
